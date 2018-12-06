@@ -1,0 +1,12 @@
+.car-main-page {
+  margin-top: 15px;
+}
+
+.item {
+  margin-bottom: 10px;
+}
+
+.item .card {
+  border: none;
+  cursor: pointer;
+}

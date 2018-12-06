@@ -1,0 +1,26 @@
+.profile-area {
+  margin-top: 15px;
+}
+
+.profile-area .image-area img {
+  width: 100%;
+  height: 237px;
+}
+
+.profile-area .information-area {
+  margin-top: 15px;
+}
+
+.information-area .btn-success {
+  margin-left: 40px;
+}
+
+.cars-area img {
+  height: 200px;
+  width: 280px;
+}
+
+.cars-area table {
+  text-align: center;
+  margin-top: 10px;
+}

@@ -1,0 +1,19 @@
+img {
+  height: 390px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.details {
+  margin-top: 15px;
+}
+.name-car {
+  font-weight: bolder;
+  font-size: 25px;
+  color: #6F6E6E;
+  text-align: center;
+}
+
+.name-car .justify-content-between {
+  color: red;
+  font-size: 20px;
+}

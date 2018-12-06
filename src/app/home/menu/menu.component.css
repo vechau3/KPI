@@ -1,0 +1,21 @@
+
+.nav-item:hover {
+  background-color: #c7c7c7;
+}
+
+.flex-column {
+  height: 470px;
+}
+
+.flex-column .nav-item {
+  text-align: center;
+}
+
+.flex-column .nav-item a {
+  color: #989fa5;
+  text-decoration: none;
+  font-family: "Segoe UI",Arial,sans-serif;
+  font-weight: bold;
+  line-height: 1.5;
+  float: left;
+}

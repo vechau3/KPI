@@ -3,24 +3,29 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { ErrorMessage, JwtInterceptor, fakeBackendProvider } from './helper'
+import { ErrorMessage, JwtInterceptor, fakeBackendProvider } from './utils'
 import { AlertService, AuthenticationService, AuthGuard, UserService } from './_services';
 
 import { AlertComponent } from './helper/alert.component'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CarsComponent } from './cars/cars.component';
+import { CarsComponent } from './cars/cars-main-page/cars.component';
+import { CarDetailsComponent } from './cars/cars-detail-page/car-details.component';
+import { FooterComponent } from './home/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MenuComponent } from './home/menu/menu.component';
 import { RegisterComponent } from './register/register.component';
 
+
 @NgModule({
   declarations: [
     AlertComponent,
     AppComponent,
     CarsComponent,
+    CarDetailsComponent,
+    FooterComponent,
     HomeComponent,
     LoginComponent,
     MenuComponent,
