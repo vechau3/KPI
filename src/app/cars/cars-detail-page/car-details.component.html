@@ -3,15 +3,15 @@
       <div class="col-sm-3 menu">
           <menu></menu>
       </div>
-      <div class="col-sm-9 row details">
+      <div *ngFor="let item of car" class="col-sm-9 row details">
         <div class="col-sm-12">
           <button type="button" class="btn btn-secondary btn-lg btn-block" disabled>Deal Details</button>
         </div>
         <div class="col-sm-12 name-car">
-          <div class="row col-sm">[2007 JEEP COMPASS LIMITED SUV]</div>
+          <div class="row col-sm">{{item.carName}}</div>
           <div class="row justify-content-between">
               <div class="col-sm-4 align-self-start">[Available: In Store]</div>
-              <div class="col-sm-4 align-self-end">[$4,695]</div>
+              <div class="col-sm-4 align-self-end">[{{item.price}}]</div>
           </div>
           <hr/>
         </div>
@@ -22,10 +22,13 @@
           <div class="col-sm-4">
             <div class="col-sm">
               <div class="col-sm">
-                Car available from : [2018-11-18]
+                Car available from : [{{item.startDate}}]
               </div>
               <div class="col-sm">
-                Price rent(per months): [$400]
+                  to : [{{item.endDate}}]
+              </div>
+              <div class="col-sm">
+                Price rent(per months): [{{item.price}}]
               </div>
               <div class="col-sm">
                 Onwer's credit score: [50/100]
@@ -41,22 +44,22 @@
           <div class="row status-car">
               <div class="col-sm-6">
                   <span>
-                      [Mileage : 121,165 Miles]
+                      [Mileage : {{item.mileage}}]
                   </span>
                 </div>
                 <div class="col-sm-6">
                   <span>
-                      [Stock # : 42766A]
+                      [Stock # : {{item.stock}}]
                   </span>
                 </div>
                 <div class="col-sm-6">
                   <span>
-                      [VIN : 1J8FT57W67D241758]
+                      [VIN : {{item.vin}}]
                   </span>
                 </div>
                 <div class="col-sm-6">
                   <span>
-                      [Transmission: Automatic FRONT-WHEEL]
+                      [Transmission: {{item.transmission}}]
                   </span>
               </div>
           </div>

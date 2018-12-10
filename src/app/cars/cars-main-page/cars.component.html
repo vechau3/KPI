@@ -4,69 +4,23 @@
         <menu></menu>
     </div>
     <div class="col-sm-9 row car-main-page">
-        <div class="col-sm-12 item">
-            <div class="card bg-dark text-white" (click)="onChoosingCar(1)">
+        <div *ngFor="let item of car | paginate: { itemsPerPage: 2, currentPage: p}" class="col-sm-12 item">
+            <div class="card bg-dark text-white" (click)="onChoosingCar(item.id)">
                 <img src="https://crdms.images.consumerreports.org/prod/cars/cr/car-groups/106-11344" class="img-thumbnail round" alt="Responsive image">
                 <div class="card-body">
                     <div>
-                        [Name]
+                        {{item.carName}}
                     </div>
                     <div>
-                        [Price]
-                    </div>
-                    <div>
-                        [Brief]
+                        ${{item.price}}
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 item">
-            <div class="card bg-dark text-white" (click)="onChoosingCar(1)">
-                <img src="https://crdms.images.consumerreports.org/prod/cars/cr/car-groups/106-11344" class="img-thumbnail round" alt="Responsive image">
-                <div class="card-body">
-                    <div>
-                        [Name]
-                    </div>
-                    <div>
-                        [Price]
-                    </div>
-                    <div>
-                        [Brief]
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 item">
-            <div class="card bg-dark text-white" (click)="onChoosingCar(1)">
-                <img src="https://crdms.images.consumerreports.org/prod/cars/cr/car-groups/106-11344" class="img-thumbnail round" alt="Responsive image">
-                <div class="card-body">
-                    <div>
-                        [Name]
-                    </div>
-                    <div>
-                        [Price]
-                    </div>
-                    <div>
-                        [Brief]
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 item">
-            <div class="card bg-dark text-white" (click)="onChoosingCar(1)">
-                <img src="https://crdms.images.consumerreports.org/prod/cars/cr/car-groups/106-11344" class="img-thumbnail round" alt="Responsive image">
-                <div class="card-body">
-                    <div>
-                        [Name]
-                    </div>
-                    <div>
-                        [Price]
-                    </div>
-                    <div>
-                        [Brief]
-                    </div>
-                </div>
-            </div>
+    </div>
+    <div class="col-sm-12">
+        <div id="pagination">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
     </div>
   </div>

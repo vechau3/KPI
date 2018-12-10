@@ -2,9 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Ng2PaginationModule } from "ng2-pagination";
 
 import { ErrorMessage, JwtInterceptor, fakeBackendProvider } from './utils'
-import { AlertService, AuthenticationService, AuthGuard, UserService } from './_services';
+import { AlertService, AuthenticationService, AuthGuard, CarService, UserService } from './_services';
 
 import { AlertComponent } from './helper/alert.component'
 import { AppRoutingModule } from './app-routing.module';
@@ -37,11 +38,13 @@ import { RegisterComponent } from './register/register.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    Ng2PaginationModule,
     ReactiveFormsModule
   ],
-  providers: [AuthGuard, AlertService, AuthenticationService, UserService, fakeBackendProvider,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorMessage, multi: true }],
+  providers: [AuthGuard, AlertService, AuthenticationService, CarService, UserService, fakeBackendProvider,
+    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: ErrorMessage, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
