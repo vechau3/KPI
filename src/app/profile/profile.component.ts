@@ -15,7 +15,7 @@ declare var $: any;
 export class ProfileComponent {
   createForm: FormGroup;
   user: User;
-  car: Car;
+  car: any;
 
   submitted = false;
 

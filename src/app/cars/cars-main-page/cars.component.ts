@@ -12,6 +12,7 @@ declare var $: any;
 })
 export class CarsComponent {
   car: Car
+  p: any
   constructor(private activatedRoute: ActivatedRoute, public router: Router) {
     this.car = JSON.parse(localStorage.getItem('cars'))
   }
