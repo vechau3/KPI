@@ -18,3 +18,12 @@
 #pagination li {
   cursor: pointer;
 }
+
+.img-thumbnail {
+  width: 100%;
+  height: 500px;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  background-color: black;
+}

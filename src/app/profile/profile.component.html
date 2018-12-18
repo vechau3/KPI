@@ -34,7 +34,6 @@
                       </tr>
                       <tr>
                         <td colspan="2">
-                          <button type="button" class="btn btn-secondary">Change Password</button>
                           <button type="button" id="create" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Create Deal</button>
                         </td>
                       </tr>
@@ -52,16 +51,22 @@
                       <div class="modal-body">
                         <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
                           <div class="row">
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-4">
                               <input type="text" formControlName="carName" class="form-control" placeholder="Car's Name" [ngClass]="{ 'is-invalid': submitted && f.carName.errors }" />
                               <div *ngIf="submitted && f.carName.errors" class="invalid-feedback">
                                 <div *ngIf="f.carName.errors.required">Name is required</div>
                               </div>
                             </div>
-                            <div class="form-group col-sm-6">
-                              <input type="text" formControlName="price" class="form-control" placeholder="Price" [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
+                            <div class="form-group col-sm-4">
+                              <input formControlName="price" type="number" class="form-control" placeholder="Price" [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
                               <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
                                 <div *ngIf="f.price.errors.required">Price is required</div>
+                              </div>
+                            </div>
+                            <div class="form-group col-sm-4">
+                              <input type="text" formControlName="status" class="form-control" placeholder="Status" [ngClass]="{ 'is-invalid': submitted && f.status.errors }" />
+                              <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+                                <div *ngIf="f.status.errors.required">Status is required</div>
                               </div>
                             </div>
                             <div class="form-group col-sm-6">
@@ -109,15 +114,10 @@
                             </div>
                           </div>
                           <div class="form-group">
-                              <button [disabled]="loading" class="btn btn-primary">Create Deal</button>
-                              <!-- <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" /> -->
+                              <button class="btn btn-primary">Create Deal</button>
                           </div>
                       </form>
                       </div>
-                      <!-- <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                      </div> -->
                     </div>
                   </div>
                 </div>
@@ -142,8 +142,8 @@
                   <td><img src="https://crdms.images.consumerreports.org/prod/cars/cr/car-groups/106-11344" class="" alt="Responsive image"></td>
                   <td>{{item.startDate}}</td>
                   <td>{{item.endDate}}</td>
-                  <td>Rented</td>
-                  <td><button type="button" class="btn btn-success">Edit</button></td>
+                  <td>{{item.status}}</td>
+                  <td><button type="button" class="btn btn-warning" (click)="deleteCar(item.id)">Delete</button></td>
                 </tr>
               </tbody>
           </table>

@@ -17,7 +17,6 @@ export class ProfileComponent {
   user: User;
   car: Car;
 
-  loading = false;
   submitted = false;
 
   constructor( private formBuilder: FormBuilder,
@@ -35,10 +34,15 @@ export class ProfileComponent {
       endDate: ['', Validators.required],
       mileage: ['', Validators.required],
       vin: ['', Validators.required],
+      status: ['', Validators.required],
       stock: ['', Validators.required],
       transmission: ['', Validators.required],
       features: ['']
     });
+  }
+
+  ngDoCheck() {
+    this.car = _.filter(JSON.parse(localStorage.getItem('cars')), { userId: this.user.id })
   }
 
   ngAfterViewInit() {
@@ -47,23 +51,31 @@ export class ProfileComponent {
     });
   }
   get f() { return this.createForm.controls; }
+
   onSubmit() {
     this.submitted = true;
     // stop here if form is invalid
     if (this.createForm.invalid) {
         return;
     }
-    this.loading = true;
     this.carService.create(this.createForm.value)
         .pipe(first())
         .subscribe(
             data => {
                 this.alertService.success('Create success', true);
+                $('#exampleModal').on('hidden.bs.modal', function(){
+                  $(this).find('form')[0].reset();
+                });
                 $('#exampleModal').modal('hide')
+                this.submitted = false;
             },
             error => {
                 this.alertService.error(error);
-                this.loading = false;
             });
   }
+
+  deleteCar(id: any) {
+    this.carService.delete(id).pipe(first()).subscribe(() => {
+    });
+}
 }

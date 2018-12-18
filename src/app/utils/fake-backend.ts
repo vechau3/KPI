@@ -52,8 +52,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             if (request.url.match(/\/car-details\/\d+$/) && request.method === 'GET') {
                 let urlParts = request.url.split('/');
                 let id = parseInt(urlParts[urlParts.length - 1]);
-                let matchedCar = _.filter(cars, {userId: id});
-                console.log('____________', matchedCar)
+                let matchedCar = _.filter(cars, {id: id});
                 return of(new HttpResponse({ status: 200, body: matchedCar }));
             }
 
@@ -62,10 +61,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 let newCar = request.body;
                 const currentUser = JSON.parse(_.get(localStorage, 'currentUser'));
 
-                newCar.id =  cars.length + 1,
-                newCar.userId = currentUser.id
+                const id =  cars.length + 1
+                const userId = currentUser.id
+                const userName = currentUser.username
 
-                cars.push(newCar);
+                cars.push({...newCar, id, userId, userName});
                 localStorage.setItem('cars', JSON.stringify(cars));
 
                 return of(new HttpResponse({ status: 200 }));
@@ -89,27 +89,21 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 return of(new HttpResponse({ status: 200 }));
             }
 
-            // delete user
-            // if (request.url.match(/\/users\/\d+$/) && request.method === 'DELETE') {
-            //     if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
-            //         let urlParts = request.url.split('/');
-            //         let id = parseInt(urlParts[urlParts.length - 1]);
-            //         for (let i = 0; i < users.length; i++) {
-            //             let user = users[i];
-            //             if (user.id === id) {
-            //                 // delete user
-            //                 users.splice(i, 1);
-            //                 localStorage.setItem('users', JSON.stringify(users));
-            //                 break;
-            //             }
-            //         }
+            //delete car
+            if (request.url.match(/\/car\/\d+$/) && request.method === 'DELETE') {
+                let urlParts = request.url.split('/');
+                let id = parseInt(urlParts[urlParts.length - 1]);
+                for (let i = 0; i < cars.length; i++) {
+                    let car = cars[i];
+                    if (car.id === id) {
+                        cars.splice(i, 1);
+                        localStorage.setItem('cars', JSON.stringify(cars));
+                        break;
+                    }
+                }
 
-            //         return of(new HttpResponse({ status: 200 }));
-            //     } else {
-
-            //         return throwError({ error: { message: 'Unauthorised' } });
-            //     }
-            // }
+                return of(new HttpResponse({ status: 200 }));
+            }
 
             return next.handle(request);
             

@@ -10,8 +10,8 @@
         <div class="col-sm-12 name-car">
           <div class="row col-sm">{{item.carName}}</div>
           <div class="row justify-content-between">
-              <div class="col-sm-4 align-self-start">[Available: In Store]</div>
-              <div class="col-sm-4 align-self-end">[{{item.price}}]</div>
+              <div class="col-sm-4 align-self-start">[{{item.status}}]</div>
+              <div class="col-sm-4 align-self-end">[USD {{item.price}}]</div>
           </div>
           <hr/>
         </div>
@@ -21,17 +21,18 @@
           </div>
           <div class="col-sm-4">
             <div class="col-sm">
+                Car available
               <div class="col-sm">
-                Car available from : [{{item.startDate}}]
+                From : {{item.startDate}}
               </div>
               <div class="col-sm">
-                  to : [{{item.endDate}}]
+                To : {{item.endDate}}
               </div>
               <div class="col-sm">
-                Price rent(per months): [{{item.price}}]
+                Price for rent: ${{item.price}}
               </div>
               <div class="col-sm">
-                Onwer's credit score: [50/100]
+                Onwer's credit score: 50/100
               </div>
               <div class="col-sm">
                   <button type="button" class="btn btn-success">Rent this car</button>
@@ -44,22 +45,22 @@
           <div class="row status-car">
               <div class="col-sm-6">
                   <span>
-                      [Mileage : {{item.mileage}}]
+                      Mileage : {{item.mileage}}
                   </span>
                 </div>
                 <div class="col-sm-6">
                   <span>
-                      [Stock # : {{item.stock}}]
+                      Stock # : {{item.stock}}
                   </span>
                 </div>
                 <div class="col-sm-6">
                   <span>
-                      [VIN : {{item.vin}}]
+                      VIN : {{item.vin}}
                   </span>
                 </div>
                 <div class="col-sm-6">
                   <span>
-                      [Transmission: {{item.transmission}}]
+                      Transmission: {{item.transmission}}
                   </span>
               </div>
           </div>

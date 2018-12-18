@@ -7,10 +7,6 @@ import { Car } from '../_model';
 export class CarService {
     constructor(private http: HttpClient) { }
 
-    // getAll() {
-    //     return this.http.get<Car[]>(`/`);
-    // }
-
     getById(id: number) {
         return this.http.get(`/car-details/` + id);
     }
@@ -23,7 +19,7 @@ export class CarService {
         return this.http.put(`/car/update` + car.id, car);
     }
 
-    delete(car: Car) {
-        return this.http.delete(`/car/` + car.id);
+    delete(id: any) {
+        return this.http.delete(`/car/` + id);
     }
 }

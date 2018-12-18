@@ -3,6 +3,8 @@ import {Subscription} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 
 import { Car } from '../../_model'
+
+declare var $: any;
 @Component({
   selector: 'cars-manage',
   templateUrl: './cars.component.html',
@@ -16,6 +18,12 @@ export class CarsComponent {
 
   private subscription: Subscription;
   title = 'Cars Management';
+
+  ngAfterViewInit() {
+    $('.carousel').carousel({
+      interval: 1500
+    })
+  }
 
   onChoosingCar(id: number) {
     this.router.navigateByUrl(`car-details/${id}`);
